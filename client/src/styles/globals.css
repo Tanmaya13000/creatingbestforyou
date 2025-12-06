@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+
+
+
+@font-face {
+  font-family:"primaryfont";
+  src: url("/fonts/MoniguedemoRegular-gwlL1.otf") format("truetype");
+}
+
+@font-face {
+  font-family:"secondaryboldfont";
+  src: url("/fonts/Lato-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family:"secondaryregularfont";
+  src: url("/fonts/Lato-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family:"secondaryregularfont";
+  src: url("/fonts/Lato-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family:"secondaryregularfont";
+  src: url("/fonts/Lato-Regular.ttf") format("truetype");
+}
