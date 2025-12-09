@@ -1,29 +1,121 @@
 @import "tailwindcss";
 
-
-
-
 @font-face {
-  font-family:"primaryfont";
+  font-family: "primaryfont";
   src: url("/fonts/MoniguedemoRegular-gwlL1.otf") format("truetype");
 }
 
 @font-face {
-  font-family:"secondaryboldfont";
+  font-family: "secondaryboldfont";
   src: url("/fonts/Lato-Bold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family:"secondaryregularfont";
+  font-family: "secondaryregularfont";
   src: url("/fonts/Lato-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family:"secondaryregularfont";
-  src: url("/fonts/Lato-Regular.ttf") format("truetype");
+  font-family: "secondarylightfont";
+  src: url("/fonts/Lato-Light.ttf") format("truetype");
 }
 
 @font-face {
-  font-family:"secondaryregularfont";
-  src: url("/fonts/Lato-Regular.ttf") format("truetype");
+  font-family: "roxhead";
+  src: url("/fonts/roxhead-display.otf") format("truetype");
 }
+
+@font-face {
+  font-family: "spacebold";
+  src: url("/fonts/SpaceGrotesk-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "spacemedium";
+  src: url("/fonts/SpaceGrotesk-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "spacelight";
+  src: url("/fonts/SpaceGrotesk-Light.ttf") format("truetype");
+}
+
+/* Keyframes for lines and text */
+@keyframes line-slide-out {
+  0% {
+    transform: scaleX(1);
+    transform-origin: left;
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+    opacity: 0;
+  }
+}
+
+@keyframes line-slide-in {
+  0% {
+    transform: scaleX(0);
+    transform-origin: left;
+    opacity: 0;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+    opacity: 1;
+  }
+}
+
+@keyframes text-move-up {
+  0% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes text-move-down {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+/* Hover Animations */
+.menu-btn:hover .line:first-child {
+  animation: line-slide-out 0.4s forwards 0s, line-slide-in 0.4s forwards 0.8s;
+}
+
+.menu-btn:hover .line:last-child {
+  animation: line-slide-out 0.4s forwards 0.2s, line-slide-in 0.4s forwards 1s;
+}
+
+.menu-btn:hover .menu-text {
+  animation: text-move-up 0.6s forwards;
+}
+
+.menu-btn:hover .menu-text-2 {
+  animation: text-move-down 0.6s forwards 0.6s;
+}
+
+.menu-shape {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #e0ff98;
+  pointer-events: none;
+  z-index: 40;
+
+  clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%);
+}
+
+

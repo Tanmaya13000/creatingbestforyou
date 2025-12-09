@@ -8,25 +8,11 @@ const Home = () => {
   const [showRightText, setShowRightText] = useState(false);
 
   const wrapperRef = useRef(null);
-  const videoRef = useRef(null);
   const targetRef = useRef({ x: 0, y: 0 });
   const currentRef = useRef({ x: 0, y: 0 });
   const rafRef = useRef(null);
 
-  const targetVideoScale = useRef(1);
-  const currentVideoScale = useRef(1);
-
-  // -------------------------------------------------
-  // NEW STATE FOR BOTTOM SHAPE WIDTH ANIMATION
-  // -------------------------------------------------
-  const bottomShapeRef = useRef(null);
-  const [bottomWidth, setBottomWidth] = useState(20); 
-  // ⚠️ ENTER YOUR STARTING WIDTH HERE (in vw)
-  // Example: set to 15 for a very small width at beginning
-  // This value will animate to 110 automatically
-  // -------------------------------------------------
-
-  // -------------------- INTRO ---------------------
+  // -------------------- INTRO ANIM ---------------------
   useEffect(() => {
     const t1 = setTimeout(() => setShowH1(true), 200);
     const t2 = setTimeout(() => setShowShapes(true), 800);
@@ -34,13 +20,8 @@ const Home = () => {
     const t4 = setTimeout(() => setShowLeftText(true), 2500);
     const t5 = setTimeout(() => setShowRightText(true), 2900);
 
-    // Animate bottom shape width
-    setTimeout(() => {
-      setBottomWidth(110); // final width in vw
-    }, 800); // starts when shapes start animating
-
     const handleMouse = (e) => {
-      const range = 40;
+      const range = 80;
       const x = (e.clientX / window.innerWidth - 0.5) * range;
       const y = (e.clientY / window.innerHeight - 0.5) * range;
       targetRef.current.x = x;
@@ -57,24 +38,12 @@ const Home = () => {
       clearTimeout(t3);
       clearTimeout(t4);
       clearTimeout(t5);
-      window.removeEventListener("mousemove", handleMouse);
       clearTimeout(startListen);
+      window.removeEventListener("mousemove", handleMouse);
     };
   }, []);
 
-  // -------------------- SCROLL SCALE ---------------------
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      const scale = 1 + Math.min(scrollY / 600, 0.8);
-      targetVideoScale.current = scale;
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // -------------------- SMOOTH ANIMATION LOOP ---------------------
+  // -------------------- SMOOTH MOTION LOOP ---------------------
   useEffect(() => {
     const stiffness = 0.08;
     const damping = 0.92;
@@ -85,49 +54,44 @@ const Home = () => {
 
       cur.x += (tar.x - cur.x) * stiffness;
       cur.y += (tar.y - cur.y) * stiffness;
+
       cur.x *= damping;
       cur.y *= damping;
 
-      currentVideoScale.current += (targetVideoScale.current - currentVideoScale.current) * 0.1;
-
-      const tx = cur.x * 2;
-      const ty = cur.y * 1.5;
-      const rotX = cur.y * 0.08;
-      const rotY = cur.x * 0.12;
+      const tx = cur.x * 2.2;
+      const ty = cur.y * 2.2;
+      const rot = cur.x * 0.12;
 
       if (wrapperRef.current) {
         wrapperRef.current.style.transform = shapesAtFinal
-          ? `translate3d(${tx}px, ${ty}px, 0) rotateX(${rotX}deg) rotateY(${rotY}deg)`
-          : "translate3d(0,0,0) rotateX(0deg) rotateY(0deg)";
+          ? `translate3d(${tx}px, ${ty}px, 0) rotate(${rot}deg)`
+          : "translate3d(0,0,0) rotate(0deg)";
       }
 
-      if (videoRef.current) {
-        const videoTx = cur.x * 5;
-        const videoTy = cur.y * 5;
-        const scale = currentVideoScale.current;
-        const videoRotX = cur.y * 0.15;
-        const videoRotY = cur.x * 0.15;
-
-        videoRef.current.style.transform =
-          `translate(-50%, -50%) translate3d(${videoTx}px, ${videoTy}px, 0) rotateX(${videoRotX}deg) rotateY(${videoRotY}deg) scale(${scale})`;
-      }
-
-      requestAnimationFrame(tick);
+      rafRef.current = requestAnimationFrame(tick);
     };
 
-    requestAnimationFrame(tick);
+    rafRef.current = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(rafRef.current);
   }, [shapesAtFinal]);
+
+  // ---------------------------------------------------
 
   return (
     <div className="w-full h-screen relative overflow-hidden bg-[#EAE3DC]">
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        {/* MOVING WRAPPER */}
         <figure
           ref={wrapperRef}
           className="absolute w-full h-full aspect-square"
-          style={{ willChange: "transform", transition: "none" }}
+          style={{
+            willChange: "transform",
+            transition: "none",
+          }}
         >
+          {/* MASK FIX: hides all ugly clipped edges */}
           <div
-            className="absolute top-1/2 left-1/2 translate-y-32 w-[max(115vw,115vh)] h-[max(120vw,120vh)] rounded-full overflow-hidden"
+            className="absolute top-1/2 left-1/2 w-[max(110vw,110vh)] h-[max(110vw,110vh)] rounded-full overflow-hidden"
             style={{
               transform: shapesAtFinal
                 ? "translate(-50%, -50%) rotate(40deg) scale(1)"
@@ -142,49 +106,27 @@ const Home = () => {
               backfaceVisibility: "hidden",
             }}
           >
-
-            {/* ---------------- TOP SHAPE ---------------- */}
+            {/* YOUR ORIGINAL PURPLE SHAPE (unchanged) */}
             <div
-              className="absolute left-0 bg-[#9C93E8]"
+              className="absolute left-0 w-[max(110vw,110vh)] h-[max(110vw,110vh)] bg-[#9C93E8]"
               style={{
-                width: "max(110vw, 110vh)",
-                height: "max(110vw, 110vh)",
                 bottom: "max(50vw, 50vh)",
-                clipPath: "polygon(40% 0, 75% 0, 51% 100%, 49% 100%)",
+                clipPath: "polygon(25% 0, 75% 0, 51% 100%, 49% 100%)",
               }}
             />
 
-            {/* ---------------- BOTTOM SHAPE (UPDATED) ---------------- */}
             <div
-              ref={bottomShapeRef}
-              className="absolute left-0 bg-[#9C93E8]"
+              className="absolute left-0 w-[max(110vw,110vh)] h-[max(110vw,110vh)] bg-[#9C93E8]"
               style={{
-                width: `${bottomWidth}vw`, // <--- WIDTH ANIMATION HERE
-                height: "max(110vw, 110vh)",
-                transition: "width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1)",
                 top: "max(50vw, 50vh)",
                 clipPath: "polygon(49% 0, 51% 0, 180% 100%, -100% 100%)",
               }}
             />
-
           </div>
         </figure>
       </div>
 
-
-
-      {/* ---------------- VIDEO ---------------- */}
-      <video
-        ref={videoRef}
-        src="/videos/Comp1.mp4"
-        autoPlay
-        loop
-        muted
-        className="absolute top-1/2 left-1/2 w-[27vw] rounded-[1.5vw] shadow-xl"
-        style={{ transform: "translate(-50%, -50%)", willChange: "transform" }}
-      />
-
-      {/* ---------------- LEFT TEXT ---------------- */}
+      {/* Left text */}
       <h5
         className="font-[secondaryregularfont] leading-[2.5vw] text-[3vw] mt-[4vw] ml-[4vw] absolute top-[20vw] z-10"
         style={{
@@ -196,7 +138,7 @@ const Home = () => {
         Rise With <br /> Good Design
       </h5>
 
-      {/* ---------------- RIGHT TEXT ---------------- */}
+      {/* Right text */}
       <p
         className="font-[secondarylightfont] text-[1.5vw] absolute top-[22vw] right-[3vw] leading-[1.5vw] z-10"
         style={{
@@ -209,7 +151,7 @@ const Home = () => {
         digital experiences that make <br /> people stop, look, and remember.
       </p>
 
-      {/* ---------------- LOGO ---------------- */}
+      {/* Bottom H1 Logo */}
       <div
         className="absolute bottom-[-1.5vw] left-1/2 w-[97vw] z-10 flex justify-center"
         style={{
@@ -229,6 +171,7 @@ const Home = () => {
         />
       </div>
 
+      {/* SVG goo filter */}
       <svg style={{ position: "absolute", width: 0, height: 0 }}>
         <defs>
           <filter id="goo">
