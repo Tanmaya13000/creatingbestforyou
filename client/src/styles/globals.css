@@ -9,6 +9,10 @@
   font-family: "secondaryboldfont";
   src: url("/fonts/Lato-Bold.ttf") format("truetype");
 }
+@font-face {
+  font-family: "galgo";
+  src: url("/fonts/Galgo.ttf") format("truetype");
+}
 
 @font-face {
   font-family: "secondaryregularfont";
@@ -39,6 +43,72 @@
   font-family: "spacelight";
   src: url("/fonts/SpaceGrotesk-Light.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "sohnelight";
+  src: url("/fonts/TestSohneBreit-Dreiviertelfett-BF663d89c955618.otf")
+    format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "sohnebold";
+  src: url("/fonts/TestSohneBreit-DreiviertelfettKursiv-BF663d89c9d74c0.otf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "interlight";
+  src: url("/fonts/Inter_18pt-Light.ttf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "intersemibold";
+  src: url("/fonts/Inter_18pt-SemiBold.ttf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "maropelight";
+  src: url("/fonts/Manrope-Light.ttf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "worksanslight";
+  src: url("/fonts/WorkSans-Light.ttf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "worksanslight";
+  src: url("/fonts/WorkSans-Light.ttf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "worksansbold";
+  src: url("/fonts/WorkSans-Bold.ttf")
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+
 
 /* Keyframes for lines and text */
 @keyframes line-slide-out {
@@ -90,13 +160,13 @@
 }
 
 /* Hover Animations */
-.menu-btn:hover .line:first-child {
+/* .menu-btn:hover .line:first-child {
   animation: line-slide-out 0.4s forwards 0s, line-slide-in 0.4s forwards 0.8s;
 }
 
 .menu-btn:hover .line:last-child {
   animation: line-slide-out 0.4s forwards 0.2s, line-slide-in 0.4s forwards 1s;
-}
+} */
 
 .menu-btn:hover .menu-text {
   animation: text-move-up 0.6s forwards;
@@ -118,4 +188,128 @@
   clip-path: polygon(0% 0%, 0% 0%, 0% 0%, 0% 0%);
 }
 
+.earth-container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1;
+  margin: 0 auto;
+  background: #cce7ff;
+  border-radius: 50%;
+  overflow: hidden;
+  touch-action: none;
+}
 
+.earth-circle {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(to top, #8bc6ec, #ffffff);
+}
+
+.marker-wrapper {
+  position: absolute;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.marker-wrapper.visible {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.marker-wrapper.active .marker-core {
+  background: #ffddc4;
+  transform: scale(1.5);
+}
+
+.marker-core {
+  width: 20px;
+  height: 20px;
+  background: #1e1e1e;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.marker-label {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  color: #1e1e1e;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.section-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #11001f; /* dark backdrop like the website */
+}
+
+/* Outer container */
+.clipPath {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.clipPath-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.clipPath-figure {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 250px;
+  height: 250px;
+  transform-style: preserve-3d;
+  transition: transform 0.2s linear;
+}
+
+.shape-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  transform: translate(-50%, -50%);
+}
+
+/* Main center shape */
+.center-shape {
+  width: 100%;
+  height: 100%;
+  background: #5a2bb9;
+  border-radius: 20%;
+  filter: blur(20px);
+}
+
+/* Two rotated sides */
+.side-shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 180px;
+  height: 180px;
+  background: #a463ff;
+  opacity: 0.7;
+  transform-origin: 50% 0%;
+  border-radius: 20%;
+  filter: blur(25px);
+}
+
+.heading {
+  position: absolute;
+  bottom: 80px;
+  left: 50px;
+  width: 500px;
+  color: white;
+  font-size: 45px;
+  font-weight: 700;
+}
