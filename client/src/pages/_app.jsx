@@ -3,20 +3,23 @@ import { Toaster } from "react-hot-toast";
 import Navbar from "@/Components/CommonPages/Navbar";
 import Footer from "@/Components/CommonPages/Footer";
 import { useEffect, useRef, useState } from "react";
+import { useRouter } from "next/router";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
-// import Loading from "@/Components/LandingPages/Loading"; ❌ commented
+import Loading from "@/Components/LandingPages/Loading.jsx";
+import Lenis from "@studio-freight/lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function App({ Component, pageProps }) {
-  // const [isLoading, setIsLoading] = useState(true); ❌ commented
+  const [isLoading, setIsLoading] = useState(true);
   const cursorRef = useRef(null);
   const mainRef = useRef(null);
   const footerRef = useRef(null);
+  const container = useRef(null);
+  const router = useRouter();
 
   // ===================== Loading Screen Effect =====================
-  /*
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
@@ -24,32 +27,27 @@ export default function App({ Component, pageProps }) {
 
     return () => clearTimeout(timer);
   }, []);
-  */
 
-  // ===================== Footer Scroll Animation =====================
   useEffect(() => {
-    if (!mainRef.current || !footerRef.current) return;
-
-    const ctx = gsap.context(() => {
-      gsap.set(footerRef.current, { yPercent: 100 });
-
-      ScrollTrigger.create({
-        trigger: mainRef.current,
-        start: "bottom bottom",
-        end: "+=100%",
-        pin: true,
-        pinSpacing: false,
-        scrub: true,
-        onUpdate: (self) => {
-          gsap.to(footerRef.current, {
-            yPercent: 100 - self.progress * 100,
-            ease: "none",
-          });
-        },
-      });
+    const lenis = new Lenis({
+      duration: 1.5,
+      lerp: 0.08,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+      smoothWheel: true,
+      smoothTouch: false,
+      wheelMultiplier: 0.9,
     });
 
-    return () => ctx.revert();
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
+
+    lenis.on('scroll', ScrollTrigger.update);
+
+    return () => lenis.destroy();
   }, []);
 
   // ===================== Custom Cursor =====================
@@ -81,8 +79,9 @@ export default function App({ Component, pageProps }) {
     return () => window.removeEventListener("mousemove", mouseMove);
   }, []);
 
+
   return (
-    <div className="flex flex-col min-h-screen">
+    <div ref={container} className="flex flex-col min-h-screen">
       {/* ===================== Custom Cursor ===================== */}
       <div
         ref={cursorRef}
@@ -100,9 +99,12 @@ export default function App({ Component, pageProps }) {
       />
 
       {/* ===================== App Content ===================== */}
+
+      {/* {isLoading ? (
+        <Loading />
+      ) : ( */}
       <>
         <Navbar />
-
         <main ref={mainRef} className="flex-1 w-full">
           <Toaster
             position="bottom-right"
@@ -112,16 +114,16 @@ export default function App({ Component, pageProps }) {
               success: {
                 iconTheme: { primary: "#4ade80", secondary: "#fff" },
               },
-              error: {
-                iconTheme: { primary: "#ef4444", secondary: "#fff" },
-              },
+              error: { iconTheme: { primary: "#ef4444", secondary: "#fff" } },
             }}
           />
           <Component {...pageProps} />
         </main>
-
-        <Footer ref={footerRef} />
+        <footer ref={footerRef} className="relative z-0">
+          <Footer />
+        </footer>
       </>
+      {/* )} */}
     </div>
   );
 }

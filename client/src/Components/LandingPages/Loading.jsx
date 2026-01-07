@@ -49,7 +49,6 @@ const Loading = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center bg-[#EAE3DC]">
       <div className="w-full h-[18vw] flex flex-col justify-between items-center px-[2vw]">
-
         {/* ================= LOADING BAR ================= */}
         <div className="relative w-full flex justify-center items-center">
           <div className="w-[73vw] relative">
@@ -64,7 +63,7 @@ const Loading = () => {
 
             {/* Percentage text */}
             <div
-              className="absolute -mt-[2.5vw] font-[galgo] text-[2vw] text-[#1F1F1F]"
+              className="absolute top-0 -translate-y-full max-md:mt-[4vw] mt-[3vw] font-[galgo] max-md:text-[5vw] text-[2vw] text-[#1F1F1F]"
               style={{
                 left: `${displayProgress}%`, // move along with progress
                 transform: "translateX(-50%)", // center the number

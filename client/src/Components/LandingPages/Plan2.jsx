@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import Copy from "../TextAnimations/copy";
 
 const Plan2 = () => {
   // --------------------------
@@ -106,7 +107,7 @@ const Plan2 = () => {
 
   return (
     <div
-      className="planpageone w-full h-screen bg-[#9C93E8] relative overflow-hidden"
+      className="planpageone w-full h-[100vh] bg-[#9C93E8] relative overflow-hidden "
       onMouseMove={handleMouseMove} // mouse move triggers hover animation
       onMouseLeave={handleMouseLeave} // mouse leave resets animation
     >
@@ -115,7 +116,7 @@ const Plan2 = () => {
       -------------------------- */}
       <img
         src="/Images/hackathon1.jpg"
-        className="fixed top-0 left-0 w-full h-full object-cover z-4"
+        className="fixed top-0 left-0 w-full h-full object-cover z--4"
         alt=""
       />
 
@@ -124,7 +125,7 @@ const Plan2 = () => {
       -------------------------- */}
       <figure
         ref={figureRef}
-        className="absolute w-full h-screen z-30"
+        className="absolute w-full h-full z-30"
         style={{ willChange: "transform" }}
       >
         {/* --------------------------
@@ -192,20 +193,26 @@ const Plan2 = () => {
         {/* --------------------------
             Text overlays
         -------------------------- */}
-        <h1 className="absolute top-[10vw] left-[42vw] font-[primaryfont] text-[7vw] leading-[8vw] ">
-          How Pricing Works
-        </h1>
-        <h2 className="font-[galgo] text-[3vw] absolute top-[25vw] left-[42vw] w-[20vw] leading-[2.5vw] ">
-          Your ambition defines scope. Scope defines investment
-        </h2>
-        <h6 className="font-[maropelight] text-[1.5vw] text-[#1E1E1E] leading-[1.5vw] absolute top-[25vw] right-0 mr-[2vw] w-[30vw]">
-          Our plans are strategic starting points, not fixed packages. Pricing
-          is refined based on customization, feature depth, content volume, and
-          automation needs. This ensures you invest only in what adds real
-          value. Once requirements are finalized, we provide a clear scope,
-          timeline, and cost — fully transparent, with no hidden charges. Our
-          pricing adapts to your goals, scale, and long-term vision.
-        </h6>
+        <Copy delay={1.2} >
+          <h1 className="absolute top-[20vw] left-[22vw] sm:top-[10vw] sm:left-[20vw] md:top-[10vw] md:left-[35vw] lg:top-[10vw] lg:left-[42vw] font-[primaryfont] text-[11vw] md:text-[9vw] lg:text-[7vw] leading-[8vw] ">
+            How Pricing Works
+          </h1>
+        </Copy>
+        <Copy delay={1.2} >
+          <h2 className="font-[galgo] text-[9vw] sm:text-[5vw] md:text-[4vw] lg:text-[3vw] absolute top-[35vw] left-[21vw] sm:top-[25vw] sm:left-[20vw] md:top-[25vw] md:left-[35vw] lg:top-[25vw] lg:left-[42vw] w-[70vw] sm:w-[30vw] md:w-[20vw] leading-[7vw] sm:leading-[4vw] md:leading-[3vw] lg:leading-[2.5vw] ">
+            Your ambition defines scope. Scope defines investment
+          </h2>
+        </Copy>
+        <Copy delay={1.2} >
+          <h6 className="font-[maropelight] max-sm:text-center text-[3.5vw] sm:text-[3vw] md:text-[2vw] lg:text-[1.5vw] text-[#1E1E1E] leading-[4.5vw] sm:leading-[3vw] md:leading-[2vw] lg:leading-[1.5vw] absolute top-[52vw] max-sm:left-[20vw] sm:top-[26vw] sm:right-[5vw] md:top-[25vw] md:right-[6vw] lg:top-[25vw] lg:right-0 mr-[2vw] w-[86vw] max-sm:px-[10vw] sm:w-[42vw] md:w-[30vw]">
+            Our plans are strategic starting points, not fixed packages. Pricing
+            is refined based on customization, feature depth, content volume, and
+            automation needs. This ensures you invest only in what adds real
+            value. Once requirements are finalized, we provide a clear scope,
+            timeline, and cost — fully transparent, with no hidden charges. Our
+            pricing adapts to your goals, scale, and long-term vision.
+          </h6>
+        </Copy>
 
         {/* --------------------------
             Gooey filter applied to shapes
@@ -229,6 +236,7 @@ const Plan2 = () => {
         </svg>
       </figure>
     </div>
+    // <div className="w-full h-full"></div>
   );
 };
 

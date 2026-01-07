@@ -1,8 +1,44 @@
 @import "tailwindcss";
 
+/* Hide scrollbar for Chrome, Safari, and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge */
+body {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+
+/* Optional: prevent overflow jank */
+html, body {
+  overflow: auto;  /* Keep scrolling functional */
+}
+
+
+.main {
+  position: relative;
+  z-index: 2;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+
 @font-face {
   font-family: "primaryfont";
   src: url("/fonts/MoniguedemoRegular-gwlL1.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "defonte";
+  src: url("/fonts/defonte.otf") format("truetype");
 }
 
 @font-face {
@@ -158,6 +194,9 @@
     opacity: 1;
   }
 }
+
+
+
 
 /* Hover Animations */
 /* .menu-btn:hover .line:first-child {

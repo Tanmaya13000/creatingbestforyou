@@ -1,0 +1,14 @@
+
+.bigText {
+    color:red;        
+}
+
+.char {
+    display: inline-block;
+    position: absolute;
+    opacity: 0;
+}
+
+.paragraph {
+    color: red;
+}
