@@ -8,6 +8,7 @@ import Page2 from "@/Components/Plans/Page2";
 import React from "react";
 import Shape from "@/Components/CommonPages/Shape.jsx"
 import Stickycards from "@/Components/LandingPages/Stickycards/Stickycards.jsx"
+import HomePage4 from "@/Components/LandingPages/HomePage4/HomePage4";
 
 
 export default function index() {
@@ -16,6 +17,7 @@ export default function index() {
       <Home />
       <Tagline />
       <Stickycards />
+      <HomePage4 />
     </div>
   );
 }

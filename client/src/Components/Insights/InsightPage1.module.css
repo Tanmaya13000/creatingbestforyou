@@ -1,14 +1,110 @@
-
-.bigText {
-    color:red;        
+@font-face {
+    font-family: "latoitalic";
+    src: url("../../../public/fonts/Lato-BlackItalic.ttf");
 }
 
-.char {
-    display: inline-block;
+.body {
+    background-color: #1F1F1F;
+    font-family: "latoitalic";
+}
+
+.about h1 {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -0.15rem;
+    line-height: 0.9;
+    text-align: center;
+    color: #ffffff;
+}
+
+.about {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.services {
+    position: inherit;
+    width: 100%;
+    height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+.services-header {
+    position: relative;
+    /* width: 100%; */
+    padding: 0.5rem 2rem;
+    background-color: #1F1F1F;
+    will-change: transform;
+}
+
+.services-header img {
+    object-fit: contain;
+}
+
+.services-header:nth-child(1),
+.services-header:nth-child(3) {
+    transform: translateX(100%) translateY(0%);
+}
+
+.services-header:nth-child(2) {
+    transform: translateX(-100%) translateY(0%);
+    z-index: 2;
+}
+
+.services-copy {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: 155svh;
+    padding: 2rem 2rem 25svh 2rem;
+    text-align: center;
+}
+
+.animate-text {
+    font-size: 4rem;
+    font-weight: 900;
+    position: relative;
+    width: 60%;
+    letter-spacing: -0.15rem;
+    line-height: 0.9;
+    margin: 0 auto;
+    color: #302f2f;
+    --clip-value: 100%;
+}
+
+
+.animate-text::before {
+    content: attr(data-text);
     position: absolute;
-    opacity: 0;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+    clip-path: inset(0 0 var(--clip-value) 0);
+    will-change: clip-path;
 }
 
-.paragraph {
-    color: red;
+@media (max-width: 1000px) {
+    .body h1 {
+        font-size: 1.5rem;
+        letter-spacing: -0.05rem;
+    }
+
+    .animate-text {
+        width: 100%;
+    }
+    .services-header {
+        padding: 0.2rem 1.5rem;
+    }
 }

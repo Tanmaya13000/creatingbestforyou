@@ -723,14 +723,12 @@ const Index = () => {
             </Copy>
           </div>
           <div className="w-full lg:w-[43vw] text-[#FFFFFF] flex justify-center items-center lg:pt-[7vw]">
-            <Copy>
-              <h1 className="font-[roxhead] text-[18vw] lg:text-[13vw] leading-[15vw] lg:leading-[11vw] text-center lg:text-left">
-                Creativity That <br /> Drives Results
-              </h1>
-            </Copy>
+            {/* <Copy> */}
+            <h1 className="font-[roxhead] text-[18vw] lg:text-[13vw] leading-[15vw] lg:leading-[11vw] text-center lg:text-left">
+              Creativity That Drives Results
+            </h1>
+            {/* </Copy> */}
           </div>
-
-
           <div className="hidden lg:block w-[20vw]" />
         </div>
 
@@ -742,14 +740,14 @@ const Index = () => {
               <h1 className="font-[roxhead] text-[18vw] lg:text-[10vw] text-[#1E1E1E]">
                 1
               </h1>
-              <Copy>
-                <p className="font-[spacelight] text-[3.5vw] lg:text-[0.9vw] text-[#1E1E1E] w-[60%] lg:w-[14vw]">
+              {/* <Copy> */}
+                <p className="font-[spacelight] text-[3.5vw] lg:text-[0.9vw] bg-red-200 max-sm:mr-[2vw] text-[#1E1E1E] max-sm:w-[60%] w-[60%] lg:w-[14vw]">
                   We start with people, not platforms. Understanding human
                   behavior shapes every design, message, and system we create —
                   because meaningful experiences aren't just seen, they're felt
                   and remembered.
                 </p>
-              </Copy>
+              {/* </Copy> */}
             </div>
             <h1 className="font-[primaryfont] text-[7vw] lg:text-[4vw] text-[#1E1E1E] w-full text-left">
               Designed for People
@@ -762,14 +760,14 @@ const Index = () => {
               <h1 className="font-[roxhead] text-[18vw] lg:text-[10vw] text-[#1E1E1E]">
                 2
               </h1>
-              <Copy>
+              {/* <Copy> */}
                 <p className="font-[spacelight] text-[3.5vw] lg:text-[0.9vw] text-[#1E1E1E] w-[60%] lg:w-[14vw]">
                   No shortcuts. No empty trends. We blend strategic thinking with
                   sharp creativity to deliver work that has clarity, purpose, and
                   measurable impact — crafted to stand out and stand strong over
                   time.
                 </p>
-              </Copy>
+              {/* </Copy> */}
             </div>
             <h1 className="font-[primaryfont] text-[7vw] lg:text-[4vw] text-[#1E1E1E] w-full text-left">
               Ideas With Purpose
@@ -782,14 +780,14 @@ const Index = () => {
               <h1 className="font-[roxhead] text-[18vw] lg:text-[10vw] text-[#1E1E1E]">
                 3
               </h1>
-              <Copy>
+              {/* <Copy> */}
                 <p className="font-[spacelight] text-[3.5vw] lg:text-[0.9vw] text-[#1E1E1E] w-[60%] lg:w-[14vw]">
                   Nothing is accidental. From the first idea to the final
                   execution, every detail is deliberate — aligned to flow
                   seamlessly, perform flawlessly, and elevate the experience at
                   every touchpoint.
                 </p>
-              </Copy>
+              {/* </Copy> */}
             </div>
             <h1 className="font-[primaryfont] text-[7vw] lg:text-[4vw] text-[#1E1E1E] w-full text-left">
               Built to Perform

@@ -516,7 +516,7 @@ const Home = () => {
       {/* HERO VIDEO */}
 
       <video
-        src="/videos/Comp1.mp4"
+        src="/videos/HomePage1/Comp1.mp4"
         autoPlay
         loop
         muted
@@ -526,13 +526,13 @@ const Home = () => {
 
       {/* LEFT TEXT */}
 
-      <div className="absolute inset-0 flex items-start max-lg:pt-[30vh] lg:items-center justify-center lg:justify-start px-[2vw] ">
+      <div className="absolute inset-0 flex items-start max-lg:pt-[20vh] lg:items-center justify-center lg:justify-start px-[2vw] ">
         <h1 className="font-[secondaryboldfont] max-w-[15ch] text-left text-[clamp(3rem,4rem,2.3rem)] leading-[1] text-[#1E1E1E] ">
           Rise With <br /> Good Design
         </h1>
       </div>
       {/* RIGHT TEXT */}
-      <div className="absolute inset-0 flex items-center pt-[30vh] lg:pt-0 justify-center lg:justify-end px-[3vw]">
+      <div className="absolute inset-0 flex items-center pt-[40vh] lg:pt-0 justify-center lg:justify-end px-[3vw]">
         <p className="font-[secondarylightfont] max-w-[32ch] text-left lg:text-left text-[clamp(1.3rem,2.2vw,1.5rem)] leading-[1.2] text-[#1E1E1E] ">
           We build thoughtful brands and <br />
           digital experiences that make <br /> people stop, look, and remember.
@@ -561,7 +561,7 @@ const Home = () => {
         }}
       >
         <img
-          src="/images/logo.svg"
+          src="/images/HomePage1/logo.svg"
           alt="hero-text"
           className="w-full h-full object-contain "
         />

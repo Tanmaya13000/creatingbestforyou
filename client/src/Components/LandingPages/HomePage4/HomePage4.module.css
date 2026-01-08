@@ -1,0 +1,162 @@
+@font-face {
+    font-family: "De Fonte Plus";
+    src: url("../../../../public/fonts/defonte.otf");
+}
+
+
+
+.body {
+    font-family: "De Fonte Plus";
+    background-color: #1F1F1F;
+    color: #ffffff;
+    position: relative;
+}
+
+.body img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+}
+
+.body h1 {
+    text-transform: uppercase;
+    font-size: 5rem;
+    font-family: "De Fonte Plus";
+    letter-spacing: -0.1rem;
+    line-height: 0.85;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100svh;
+    overflow: hidden;
+}
+
+.carousel-images,
+.carousel-images .img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-images .img {
+    will-change: clip-path;
+}
+
+.carousel-images {
+    opacity: 0.85;
+}
+
+.slide-title-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+/* Make sure these are in your CSS */
+.carousel-images .img {
+    position: absolute;
+    /* ✅ MUST BE ABSOLUTE */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    will-change: clip-path;
+}
+
+.carousel-images .img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    will-change: transform;
+    /* ✅ Important for smooth animation */
+}
+
+.slide-title-container .title {
+    position: relative;
+    text-align: center;
+    filter: url(#blur-matrix) blur(0.25px);
+    -webkit-filter: url(#blur-matrix) blur(0.25px);
+    z-index: 2;
+}
+
+.slide-title-container .title .word {
+    filter: blur(75px);
+    -webkit-filter: blur(75px);
+    will-change: filter, opacity;
+    opacity: 0;
+}
+
+.slider-controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.control-btn {
+    font-size: 2rem;
+    padding: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: 0.075rem dashed rgba(255, 255, 255, 0.75);
+    border-radius: 0.25rem;
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+}
+
+/* 
+.control-btn {
+    width: 1.5rem;
+    height: 1.5rem;
+    stroke: #1F1F1F;
+    transition: fill 200ms ease-in-out;
+} */
+
+.control-btn:hover {
+    background-color: #ffffff;
+    color: #1F1F1F;
+}
+
+@media (max-width: 900px) {
+    .body h1 {
+        font-size: 3rem;
+    }
+
+    .slide-title-container {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .slider-controls {
+        top: 85%;
+        left: 50%;
+        width: 50%;
+        transform: translate(-50%, -50%);
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .control-btn {
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+}

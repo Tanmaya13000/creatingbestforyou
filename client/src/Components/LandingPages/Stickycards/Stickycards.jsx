@@ -76,23 +76,6 @@ const HomePage3 = () => {
         })
     }, { scope: container });
 
-    // useGSAP(() => {
-    //     const stickyCards = gsap.utils.toArray(".sticky-card");
-
-    //     stickyCards.forEach((card, index) => {
-    //         if (index < stickyCards.length - 1) {
-    //             ScrollTrigger.create({
-    //                 trigger: card,
-    //                 start: "top top",
-    //                 endTrigger: stickyCards[stickyCards.length - 1],
-    //                 end: "top top",
-    //                 pin: true,
-    //                 pinSpacing: false,
-    //             });
-    //         }
-    //     });
-    // }, { scope: container });
-
     return (
         <div className="sticky-cards w-screen min-h-screen relative bg-[#1F1F1F] z-10 " ref={container} >
             {
@@ -143,7 +126,7 @@ const HomePage3 = () => {
                                     </div>
                                 
                                     <div className=" sm:text-base leading-relaxed">
-                                        <p className="font-[secondaryregularfont] text-xl text-[#1F1F1F] ">{cardData.description}</p>
+                                        <p className="font-[secondaryregularfont] text-md sm:xl text-[#1F1F1F] ">{cardData.description}</p>
                                     </div>
                                 </div>
                             </div>
