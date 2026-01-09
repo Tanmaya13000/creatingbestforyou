@@ -24,7 +24,7 @@ const app = express();
 
 // ALLOWED ORIGINS (FIXED)
 const allowedOrigins = [
-    "https://creatingbestforyou.com",
+    "https://creatingbestforyou.online",
     "http://localhost:3000",
 ];
 

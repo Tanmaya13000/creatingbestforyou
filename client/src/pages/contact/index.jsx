@@ -32,7 +32,6 @@ const Index = () => {
     email: "",
     phone: "",
     company: "",
-    projectType: "Corporate Event",
     message: "",
   });
 
@@ -122,7 +121,6 @@ const Index = () => {
     if (Object.keys(newErrors).length > 0) return;
 
     // Otherwise, submit the form
-    console.log("Form submitted:", formData);
 
     try {
       const response = await axios.post(USER_CONTACT, {
@@ -133,7 +131,13 @@ const Index = () => {
         message: formData.message,
       });
       if (response.status === 201) {
-        console.log("sended");
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          company: "",
+          message: "",
+        })
       } // Your axios call here
     } catch (error) {
       console.error(error);
@@ -218,8 +222,8 @@ const Index = () => {
             clipPath: !pageLoaded
               ? "polygon(0 0, 100% 0, 100% 100%, 0 100%)" // Full screen on load
               : ishovered
-              ? "polygon(0 0, 93% 0, 90% 100%, 0 100%)" // Shrinks when hovered
-              : "polygon(0 0, 94.5% 0, 92% 100%, 0 100%)", // Default clip
+                ? "polygon(0 0, 93% 0, 90% 100%, 0 100%)" // Shrinks when hovered
+                : "polygon(0 0, 94.5% 0, 92% 100%, 0 100%)", // Default clip
           }}
         >
           {/* LEFT COLUMN - Vertical text */}
@@ -246,9 +250,8 @@ const Index = () => {
                 {headingLines.map((line, index) => (
                   <div key={index} className="overflow-hidden">
                     <div
-                      className={`transition-transform duration-[900ms] ease-out ${
-                        textVisible ? "translate-y-0" : "translate-y-full"
-                      }`} // Slide up animation
+                      className={`transition-transform duration-[900ms] ease-out ${textVisible ? "translate-y-0" : "translate-y-full"
+                        }`} // Slide up animation
                       style={{ transitionDelay: `${index * 200}ms` }} // Staggered effect
                     >
                       {line}
@@ -262,9 +265,8 @@ const Index = () => {
                 {paragraphLines.map((line, index) => (
                   <div key={index} className="overflow-hidden">
                     <div
-                      className={`transition-transform duration-[900ms] ease-out ${
-                        textVisible ? "translate-y-0" : "translate-y-full"
-                      }`} // Slide up animation
+                      className={`transition-transform duration-[900ms] ease-out ${textVisible ? "translate-y-0" : "translate-y-full"
+                        }`} // Slide up animation
                       style={{ transitionDelay: `${(index + 2) * 100}ms` }} // Staggered
                     >
                       {line}
@@ -278,9 +280,8 @@ const Index = () => {
           {/* RIGHT COLUMN - FORM SECTION */}
           <div
             ref={formRef} // Ref observed by IntersectionObserver
-            className={`transition-transform duration-[900ms] ease-out ${
-              formVisible ? "translate-y-0" : "translate-y-[80px]"
-            }`} // Slide up animation when form comes into view
+            className={`transition-transform duration-[900ms] ease-out ${formVisible ? "translate-y-0" : "translate-y-[80px]"
+              }`} // Slide up animation when form comes into view
           >
             <div className="w-[37vw] h-full py-[10vw] pr-[4vw] overflow-y-auto scrollbar-hide">
               <div className="w-full h-full flex flex-col gap-[2vw]">
@@ -445,9 +446,8 @@ const Index = () => {
                 {headingLines.map((line, index) => (
                   <div key={index} className="overflow-hidden">
                     <div
-                      className={`transition-transform duration-[900ms] ease-out ${
-                        textVisible ? "translate-y-0" : "translate-y-full"
-                      }`}
+                      className={`transition-transform duration-[900ms] ease-out ${textVisible ? "translate-y-0" : "translate-y-full"
+                        }`}
                       style={{ transitionDelay: `${index * 200}ms` }}
                     >
                       {line}
@@ -461,9 +461,8 @@ const Index = () => {
                 {paragraphLines.map((line, index) => (
                   <div key={index} className="overflow-hidden">
                     <div
-                      className={`transition-transform duration-[900ms] ease-out ${
-                        textVisible ? "translate-y-0" : "translate-y-full"
-                      }`}
+                      className={`transition-transform duration-[900ms] ease-out ${textVisible ? "translate-y-0" : "translate-y-full"
+                        }`}
                       style={{ transitionDelay: `${(index + 2) * 100}ms` }}
                     >
                       {line}
@@ -477,9 +476,8 @@ const Index = () => {
           {/* RIGHT COLUMN - FORM SECTION */}
           <div
             ref={formRef}
-            className={`transition-transform duration-[900ms] ease-out w-full md:w-[60vw] ${
-              formVisible ? "translate-y-0" : "translate-y-[80px]"
-            }`}
+            className={`transition-transform duration-[900ms] ease-out w-full md:w-[60vw] ${formVisible ? "translate-y-0" : "translate-y-[80px]"
+              }`}
           >
             <div className="w-full h-full md:py-[10vw] py-0 md:pr-[7vw] pr-0 overflow-y-auto scrollbar-hide">
               <div className="w-full h-full flex flex-col gap-[2vw] md:gap-[2vw]">
