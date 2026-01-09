@@ -135,7 +135,7 @@ const Footer = () => {
               {/* GROUP */}
               <div className="group leading-[7vw] sm:leading-[5.5vw] md:leading-[4.5vw] lg:leading-[3.5vw] xl:leading-[2.5vw] [&:hover>a:not(:hover)]:opacity-30 ">
                 {[
-                  { name: "LinkedIn", link: "https://www.linkedin.com" },
+                  { name: "LinkedIn", link: "https://www.linkedin.com/in/creatingbestforyou" },
                   { name: "Instagram", link: "https://www.instagram.com" },
                 ].map((item) => (
                   <Copy>

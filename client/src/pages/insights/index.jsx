@@ -99,7 +99,7 @@ const index = () => {
           {/* IMAGE */}
           <div className="w-[28vw] h-full flex justify-center items-center">
             <img
-              src="/images/timeline.jpg"
+              src="/Images/timeline.jpg"
               alt=""
               className={`w-[27vw] h-[9vw] rounded-xl
               transition-all duration-700 delay-500

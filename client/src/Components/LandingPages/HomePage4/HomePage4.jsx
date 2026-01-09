@@ -327,7 +327,7 @@ const HomePage4 = () => {
         },
         {
             title: "Timeless Foundations",
-            image: "/Images/HomePage4/3.png"
+            image: "/Images/HomePage4/7.jpg"
         },
         {
             title: "Purpose Before Power",
