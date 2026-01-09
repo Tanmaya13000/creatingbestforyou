@@ -711,10 +711,10 @@ const Index = () => {
             </div>
           </div>
 
-          <div className="absolute inset-0 flex justify-center md:justify-start items-center px-[10vw] ">
+          <div className="absolute inset-0 flex justify-center md:justify-start items-center px-[10vw] w-full ">
             <Copy>
               <p
-                className={` font-[secondaryboldfont] text-[4vw] md:text-[3vw] leading-[2.5vw]
+                className={` font-[latoitalic] text-[10vw] sm:text-[4vw] md:text-[3vw] leading-[10vw] sm:leading-[3vw] w-full px-[2vw] 
                 }`}
               >
                 Where creativity meets strategy to <br />
@@ -844,9 +844,9 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="page3 w-full h-[50vh] bg-[#E0FF98] flex justify-center items-center z-10000 ">
+        <div className="page3 w-full h-[50vh] bg-[#E0FF98] flex justify-center items-center z-10000 p-10vw ">
           <Copy>
-            <h1 className="font-[roxhead] text-[7vw] leading-[6vw] text-center ">
+            <h1 className="font-[latoitalic] text-[4vh] py-[3vw] sm:text-[5vw] leading-[14vw] sm:leading-[5vw] text-center w-full px-[2vw] ">
               Nobody is good - they're only good at showing they're good. <br /> and
               that's where we come in.
             </h1>

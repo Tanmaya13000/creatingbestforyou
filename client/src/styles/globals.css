@@ -35,6 +35,10 @@ html, body {
   font-family: "primaryfont";
   src: url("/fonts/MoniguedemoRegular-gwlL1.otf") format("truetype");
 }
+@font-face {
+  font-family: "latoitalic";
+  src: url("/fonts/Lato-BlackItalic.ttf") format("truetype");
+}
 
 @font-face {
   font-family: "defonte";
