@@ -100,30 +100,30 @@ export default function App({ Component, pageProps }) {
 
       {/* ===================== App Content ===================== */}
 
-      {/* {isLoading ? (
+      {isLoading ? (
         <Loading />
-      ) : ( */}
-      <>
-        <Navbar />
-        <main ref={mainRef} className="flex-1 w-full">
-          <Toaster
-            position="bottom-right"
-            toastOptions={{
-              duration: 4000,
-              style: { background: "#363636", color: "#fff" },
-              success: {
-                iconTheme: { primary: "#4ade80", secondary: "#fff" },
-              },
-              error: { iconTheme: { primary: "#ef4444", secondary: "#fff" } },
-            }}
-          />
-          <Component {...pageProps} />
-        </main>
-        <footer ref={footerRef} className="relative z-0">
-          <Footer />
-        </footer>
-      </>
-      {/* )} */}
+      ) : (
+        <>
+          <Navbar />
+          <main ref={mainRef} className="flex-1 w-full">
+            <Toaster
+              position="bottom-right"
+              toastOptions={{
+                duration: 4000,
+                style: { background: "#363636", color: "#fff" },
+                success: {
+                  iconTheme: { primary: "#4ade80", secondary: "#fff" },
+                },
+                error: { iconTheme: { primary: "#ef4444", secondary: "#fff" } },
+              }}
+            />
+            <Component {...pageProps} />
+          </main>
+          <footer ref={footerRef} className="relative z-0">
+            <Footer />
+          </footer>
+        </>
+      )}
     </div>
   );
 }
