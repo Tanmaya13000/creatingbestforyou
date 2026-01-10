@@ -81,49 +81,59 @@ export default function App({ Component, pageProps }) {
 
 
   return (
-    <div ref={container} className="flex flex-col min-h-screen">
-      {/* ===================== Custom Cursor ===================== */}
-      <div
-        ref={cursorRef}
-        className="fixed pointer-events-none z-[9999] mix-blend-difference"
-        style={{
-          width: 20,
-          height: 20,
-          borderRadius: "50%",
-          backgroundColor: "#E0FF98",
-          position: "fixed",
-          top: 0,
-          left: 0,
-          willChange: "transform",
-        }}
-      />
+    <>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-S77ECMESJQ"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-      {/* ===================== App Content ===================== */}
+        gtag('config', 'G-S77ECMESJQ');
+      </script>
+      <div ref={container} className="flex flex-col min-h-screen">
+        {/* ===================== Custom Cursor ===================== */}
+        <div
+          ref={cursorRef}
+          className="fixed pointer-events-none z-[9999] mix-blend-difference"
+          style={{
+            width: 20,
+            height: 20,
+            borderRadius: "50%",
+            backgroundColor: "#E0FF98",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            willChange: "transform",
+          }}
+        />
 
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <>
-          <Navbar />
-          <main ref={mainRef} className="flex-1 w-full">
-            <Toaster
-              position="bottom-right"
-              toastOptions={{
-                duration: 4000,
-                style: { background: "#363636", color: "#fff" },
-                success: {
-                  iconTheme: { primary: "#4ade80", secondary: "#fff" },
-                },
-                error: { iconTheme: { primary: "#ef4444", secondary: "#fff" } },
-              }}
-            />
-            <Component {...pageProps} />
-          </main>
-          <footer ref={footerRef} className="relative z-0">
-            <Footer />
-          </footer>
-        </>
-      )}
-    </div>
+        {/* ===================== App Content ===================== */}
+
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <Navbar />
+            <main ref={mainRef} className="flex-1 w-full">
+              <Toaster
+                position="bottom-right"
+                toastOptions={{
+                  duration: 4000,
+                  style: { background: "#363636", color: "#fff" },
+                  success: {
+                    iconTheme: { primary: "#4ade80", secondary: "#fff" },
+                  },
+                  error: { iconTheme: { primary: "#ef4444", secondary: "#fff" } },
+                }}
+              />
+              <Component {...pageProps} />
+            </main>
+            <footer ref={footerRef} className="relative z-0">
+              <Footer />
+            </footer>
+          </>
+        )}
+      </div>
+    </>
   );
 }
